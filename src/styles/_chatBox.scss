@@ -1,0 +1,23 @@
+@use "variables";
+
+.lobbyDiv,
+.textInput {
+  border-radius: 12px;
+  border: 1px solid variables.$pink;
+}
+
+.lobbyDiv {
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.textInput {
+  padding: 0.325rem;
+  margin: 0.325rem;
+  width: 98%;
+  background-color: variables.$darkGrey;
+  color: variables.$lightGrey;
+}

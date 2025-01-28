@@ -6,6 +6,12 @@
   gap: 0.3125rem;
 }
 
+.userDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.325rem;
+}
+
 .userIcon {
   background-color: variables.$pink;
   border-radius: 50%;

@@ -5,11 +5,26 @@ import { HiMiniServer } from "react-icons/hi2";
 const ServerList = () => {
   return (
     <div className="serverList">
-      <MdAdd className="addServerBtn" />
-      <HiMiniServer className="serverBtn" />
-      <HiMiniServer className="serverBtn" />
-      <HiMiniServer className="serverBtn" />
-      <HiMiniServer className="serverBtn" />
+      <div className="serverDiv">
+        <MdAdd className="addServerBtn" />
+        <p>add server</p>
+      </div>
+      <div className="serverDiv">
+        <HiMiniServer className="serverBtn" />
+        <p>server 1</p>
+      </div>
+      <div className="serverDiv">
+        <HiMiniServer className="serverBtn" />
+        <p>server 2</p>
+      </div>
+      <div className="serverDiv">
+        <HiMiniServer className="serverBtn" />
+        <p>server 3</p>
+      </div>
+      <div className="serverDiv">
+        <HiMiniServer className="serverBtn" />
+        <p>server 4</p>
+      </div>
     </div>
   );
 };

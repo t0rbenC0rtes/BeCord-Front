@@ -7,6 +7,12 @@
   gap: 0.3125rem;
 }
 
+.serverDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.325rem;
+}
+
 .addServerBtn,
 .serverBtn {
   background-color: variables.$pink;
