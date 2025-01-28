@@ -25,7 +25,27 @@
 }
 
 .userList {
-  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.userIcon {
+  background-color: rgb(240, 194, 225);
+  border-radius: 50%;
+  padding: 10px;
+  color: rgb(56, 52, 60);
+  transition: all 0.3s;
+}
+.userIcon:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+.display {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 body {
