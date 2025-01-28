@@ -2,6 +2,8 @@
 
 .userList {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 0.3125rem;
 }

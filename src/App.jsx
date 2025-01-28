@@ -7,7 +7,10 @@ import ChatBox from "./components/ChatBox";
 const App = () => {
   return (
     <div className="app">
-      <h1>BeCord</h1>
+      <h1>
+        <img className="logo" src="../public/becord-logo.png" alt="" />
+        BeCord
+      </h1>
       <div className="display">
         <ServerList />
         <ChatBox />
