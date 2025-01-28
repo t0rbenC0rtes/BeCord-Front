@@ -1,0 +1,21 @@
+@use "variables";
+@use "mixins";
+@use "serverList";
+@use "userList";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: variables.$darkGrey;
+  color: variables.$lightGrey;
+}
+
+.app {
+  font-family: "Uni Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.875rem;
+}

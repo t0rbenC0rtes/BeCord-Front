@@ -1,0 +1,12 @@
+// _variables.scss
+// font
+@font-face {
+  font-family: "Uni Sans";
+  src: url("/fonts/Uni Sans Regular.otf") format("opentype");
+  font-weight: bold;
+}
+
+// colors
+$pink: rgb(240, 194, 225);
+$darkGrey: rgb(56, 52, 60);
+$lightGrey: rgba(208, 212, 214, 255);

@@ -1,0 +1,21 @@
+@use "variables";
+
+.serverList {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.addServerBtn,
+.serverBtn {
+  background-color: variables.$pink;
+  border-radius: 50%;
+  padding: 10px;
+  color: variables.$darkGrey;
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.2;
+    cursor: pointer;
+  }
+}

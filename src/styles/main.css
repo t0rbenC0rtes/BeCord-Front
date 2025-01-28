@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Uni Sans";
+  src: url("/fonts/Uni Sans Regular.otf") format("opentype");
+  font-weight: bold;
+}
+.serverList {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.addServerBtn,
+.serverBtn {
+  background-color: rgb(240, 194, 225);
+  border-radius: 50%;
+  padding: 10px;
+  color: rgb(56, 52, 60);
+  transition: all 0.3s;
+}
+.addServerBtn:hover,
+.serverBtn:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+.userList {
+  align-self: flex-end;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(56, 52, 60);
+  color: rgb(208, 212, 214);
+}
+
+.app {
+  font-family: "Uni Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.875rem;
+}/*# sourceMappingURL=main.css.map */
