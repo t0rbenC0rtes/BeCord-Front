@@ -4,6 +4,7 @@
 @use "userList";
 @use "display";
 @use "chatBox";
+@use "toggle";
 
 body {
   margin: 0;
@@ -20,6 +21,10 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 0.875rem;
+  h1 {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .logo {
