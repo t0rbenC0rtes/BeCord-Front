@@ -1,22 +1,14 @@
-import React from "react";
-import "./styles/main.scss";
-import ServerList from "./components/ServerList";
-import UserList from "./components/UserList";
-import ChatBox from "./components/ChatBox";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./components/Login";
+import Home from "./components/Home";
 
 const App = () => {
   return (
-    <div className="app">
-      <h1>
-        <img className="logo" src="../becord-logo.png" alt="" />
-        BeCord
-      </h1>
-      <div className="display">
-        <ServerList />
-        <ChatBox />
-        <UserList />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/app" element={<Home />} />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 };
 

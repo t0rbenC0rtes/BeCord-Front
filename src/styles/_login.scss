@@ -1,0 +1,28 @@
+@use 'variables';
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Uni Sans";
+    margin: 5rem auto;
+    h1 {
+        display: flex;
+        align-items: center;
+      }
+    border: 1px solid variables.$pink;
+    border-radius: 12px;
+    max-width: 18.75rem;
+    min-height: 25rem;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;        
+        button, input {
+            border-radius: 12px;
+            padding: .3125rem;
+            cursor: pointer;
+            font-family: "Uni Sans";
+        }
+    }
+}
