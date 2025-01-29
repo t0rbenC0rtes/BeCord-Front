@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="app">
       <h1>
-        <img className="logo" src="../public/becord-logo.png" alt="" />
+        <img className="logo" src="../becord-logo.png" alt="" />
         BeCord
       </h1>
       <div className="display">

@@ -1,16 +1,20 @@
 import React from "react";
 import { MdAdd } from "react-icons/md";
 import { HiMiniServer } from "react-icons/hi2";
+import { GrGroup } from "react-icons/gr";
+import { RiGroupLine } from "react-icons/ri";
 
 const ServerList = () => {
   return (
     <>
       <div className="serverList">
         <div className="toggle">
+          <GrGroup />
           <label className="switch">
             <input type="checkbox" />
             <span className="slider"></span>
           </label>
+          <RiGroupLine />
         </div>
         <div className="serverDiv">
           <MdAdd className="addServerBtn" />
