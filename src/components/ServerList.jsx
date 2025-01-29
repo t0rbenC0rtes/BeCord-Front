@@ -8,14 +8,7 @@ const ServerList = () => {
   return (
     <>
       <div className="serverList">
-        <div className="toggle">
-          <GrGroup />
-          <label className="switch">
-            <input type="checkbox" />
-            <span className="slider"></span>
-          </label>
-          <RiGroupLine />
-        </div>
+        
         <div className="serverDiv">
           <MdAdd className="addServerBtn" />
           <p>add server</p>
