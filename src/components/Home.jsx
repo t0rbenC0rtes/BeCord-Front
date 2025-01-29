@@ -5,19 +5,19 @@ import ChatBox from "./ChatBox";
 import Toggles from "./Toggles";
 
 const Home = () => {
-  const [showUserList, setShowUserList] = useState(false); // Default to 'ON'
+  const [showLists, setShowLists] = useState(true);
 
-  const toggleUserList = () => {
-    setShowUserList((prev) => !prev);
+  const toggleLists = () => {
+    setShowLists((prev) => !prev);
   };
 
   return (
     <div className="app">
-      <Toggles showUserList={showUserList} toggleUserList={toggleUserList} />
+      <Toggles showLists={showLists} toggleLists={toggleLists} />
       <div className="display">
-        <ServerList />
+        {showLists && <ServerList />}
         <ChatBox />
-        {showUserList && <UserList />}
+        {showLists && <UserList />}
       </div>
     </div>
   );
