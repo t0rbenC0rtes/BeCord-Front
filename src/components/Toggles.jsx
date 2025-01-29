@@ -3,7 +3,7 @@ import { GrGroup } from "react-icons/gr";
 import { RiGroupLine } from "react-icons/ri";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Toggles = () => {
+const Toggles = ({ showUserList, toggleUserList }) => {
   return (
     <div className="toggle">
       <div className="serverToggle">
@@ -17,7 +17,11 @@ const Toggles = () => {
       <div className="userToggle">
         <FaEye />
         <label className="switch">
-          <input type="checkbox" />
+          <input 
+            type="checkbox" 
+            checked={showUserList} 
+            onChange={toggleUserList} 
+          />
           <span className="slider"></span>
         </label>
         <FaEyeSlash />
