@@ -15,12 +15,39 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
       credentials: "include",
-    }).then((res) => ( res.json() )).then((data) => ( console.log(data) ));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data),
+          navigate("/app");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => console.error("Erreur lors de la connexion", error));
+  };
 
-    if (email.trim() && password.trim()) {
-      localStorage.setItem("email", email);
-      navigate("/app");
-    }
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    fetch(`${API_URL}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+      credentials: "include",
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        console.log(data),
+        alert("You have been registered successfully, you can now login"),
+        navigate("/app");
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch((error) => console.error("Erreur lors de l'inscription", error));
   };
 
   return (
@@ -29,7 +56,7 @@ const Login = () => {
         <img className="logo" src="../becord-logo.png" alt="logo" />
         BeCord
       </h1>
-      <form onSubmit={handleLogin}>
+      <form>
         <input
           type="text"
           placeholder="Enter email"
@@ -42,8 +69,8 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={handleLogin}>Login</button>
+        <button type="submit" onClick={handleRegister}>Register</button>
       </form>
     </div>
   );
