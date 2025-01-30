@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const API_URL = "http://localhost:3000";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username.trim() && password.trim()) {
-      localStorage.setItem("username", username);
+
+    fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+      credentials: "include",
+    }).then((res) => ( res.json() )).then((data) => ( console.log(data) ));
+
+    if (email.trim() && password.trim()) {
+      localStorage.setItem("email", email);
       navigate("/app");
     }
   };
@@ -23,9 +32,9 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <input
           type="text"
-          placeholder="Enter username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
