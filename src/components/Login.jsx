@@ -41,7 +41,7 @@ const Login = () => {
     .then((data) => {
       if (data.success) {
         console.log(data),
-        alert("You have been registered successfully, you can now login if you want to."),
+        alert("You have been registered successfully, you can now login."),
         navigate("/app");
       } else {
         alert(data.message);
