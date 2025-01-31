@@ -1,36 +1,39 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { MdAdd } from "react-icons/md";
 import { HiMiniServer } from "react-icons/hi2";
-import { GrGroup } from "react-icons/gr";
-import { RiGroupLine } from "react-icons/ri";
 
 const ServerList = () => {
+  const [lobbies, setLobbies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/lobbies").then((result) => (result.json())).then((data) => {
+      setLobbies(data)
+    })
+  }, []);
+
+  if (loading) {
+    return <p>Loading lobbies...</p>;
+  }
+
   return (
-    <>
-      <div className="serverList">
-        
-        <div className="serverDiv">
-          <MdAdd className="addServerBtn" />
-          <p>add server</p>
-        </div>
-        <div className="serverDiv">
-          <HiMiniServer className="serverBtn" />
-          <p>server 1</p>
-        </div>
-        <div className="serverDiv">
-          <HiMiniServer className="serverBtn" />
-          <p>server 2</p>
-        </div>
-        <div className="serverDiv">
-          <HiMiniServer className="serverBtn" />
-          <p>server 3</p>
-        </div>
-        <div className="serverDiv">
-          <HiMiniServer className="serverBtn" />
-          <p>server 4</p>
-        </div>
+    <div className="serverList">
+      <div className="serverDiv">
+        <MdAdd className="addServerBtn" /><p>Add server</p>
       </div>
-    </>
+      {lobbies.length > 0 ? (
+        <ul className="serverDiv">
+          {lobbies.map((lobby) => (
+            <li key={lobby._id}>
+              <HiMiniServer className="serverBtn" />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No lobbies available.</p>
+      )}
+    </div>
   );
 };
 
