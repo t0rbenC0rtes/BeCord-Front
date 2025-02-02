@@ -3,23 +3,24 @@ import { io } from "socket.io-client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const socket = io("http://localhost:3000", {
-  transports: ["websocket"],
-});
 
-export default function ChatApp() {
+
+export default function ChatApp({currentLobby, joinChannel, messagesObj, socket}) {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
   const [channelName, setChannelName] = useState("");
-  const [currentChannel, setCurrentChannel] = useState(null);
-  const [channels, setChannels] = useState([]);
+  // const [channels, setChannels] = useState([]);
+  const {messages, setMessages} = messagesObj;
 
+  
   useEffect(() => {
-    fetch("http://localhost:3000/lobbies")
-      .then((result) => result.json())
-      .then((data) => {
-        setChannels(data);
-      });
+    if(!currentLobby){return;}
+
+    
+    socket.on("connect", () => {
+      console.log("Socket connected successfully!");
+    });
+
+    joinChannel(currentLobby)
 
     socket.on("receive_message_from_channel", (data) => {
       console.log(data);
@@ -33,7 +34,7 @@ export default function ChatApp() {
       socket.off("receive_message_from_channel");
       socket.off("connection");
     };
-  }, []);
+  }, [currentLobby]);
 
   const createChannel = async () => {
     if (!channelName.trim()) {
@@ -58,7 +59,7 @@ export default function ChatApp() {
       const newLobby = await response.json();
 
       // Store the new lobby's ID in state
-      setChannels((prev) => [...prev, newLobby]);
+      // setChannels((prev) => [...prev, newLobby]);
 
       toast(`Channel créé avec succès: ${newLobby.name}`);
     } catch (error) {
@@ -67,43 +68,13 @@ export default function ChatApp() {
     }
   };
 
-  const joinChannel = async (channel) => {
-    socket.emit("join_channel", channel); // Envoie l'ID du lobby au serveur
-
-    setCurrentChannel(channel);
-
-    try {
-      const response = await fetch(
-        `http://localhost:3000/lobbyMessages/${channel._id}`,
-        {
-          method: "GET",
-          credentials: "include", // Important pour envoyer le cookie JWT
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Erreur lors de la récupération des messages");
-      }
-
-      const data = await response.json();
-
-      console.log(data.messages);
-
-      setMessages(data.messages || []); // Mets à jour les messages avec ceux de la DB
-
-      toast(`Vous avez rejoint le channel ${channel._id}`);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des messages:", error);
-      toast("Erreur lors de la récupération des messages");
-    }
-  };
 
   const sendMessage = () => {
-    if (message.trim() && currentChannel) {
+    if (message.trim() && currentLobby) {
       socket.emit("send_message_to_channel", {
         sender: "Me",
         text: message,
-        channel: currentChannel,
+        channel: currentLobby,
       });
       setMessage("");
     }
@@ -123,19 +94,20 @@ export default function ChatApp() {
       <div className="mb-4">
         <h3>Liste des Channels</h3>
         <ul>
-          {channels.map((channel, index) => (
+          {/* {
+          channels.map((channel, index) => (
             <li key={index}>
               <button onClick={() => joinChannel(channel)}>
                 {channel.name}
               </button>
             </li>
-          ))}
+          ))} */}
         </ul>
       </div>
 
-      {currentChannel && (
+      {currentLobby && (
         <div>
-          <h3>Messages dans le channel {currentChannel.name}</h3>
+          <h3>Messages dans le channel {currentLobby.name}</h3>
           <Card>
             <CardContent className="p-4">
               <div className="mb-4 max-h-60 overflow-y-auto border p-2 rounded">

@@ -2,9 +2,14 @@ import React from "react";
 import { IoMdSend } from "react-icons/io";
 import Test from "./Test";
 
-const ChatBox = () => {
+const ChatBox = ({ currentLobby, joinChannel, messagesObj, socket }) => {
   return (
-    <Test></Test>
+    <Test
+      currentLobby={currentLobby}
+      joinChannel={joinChannel}
+      messagesObj={messagesObj}
+      socket={socket}
+    ></Test>
     // <div className="lobbyDiv">
     //   <div className="lobbyMsg"></div>
 
